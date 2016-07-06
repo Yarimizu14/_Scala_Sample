@@ -2,14 +2,14 @@ import Math.{ pow }
 
 abstract class Human {
   def age: Int
-  def tall: Double
+  def height: Double
   def weight: Double
-  def bmi: Double = weight / pow(tall / 100, 2)
+  def bmi: Double = weight / pow(height / 100, 2)
 }
 
-case class Male(val age: Int, val tall: Double, val weight: Double) extends Human
+case class Male(val age: Int, val height: Double, val weight: Double) extends Human
 
-case class Female(val age: Int, val tall: Double, val weight: Double) extends Human
+case class Female(val age: Int, val height: Double, val weight: Double) extends Human
 
 object Statistics extends App {
 
