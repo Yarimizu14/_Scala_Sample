@@ -1,5 +1,6 @@
 import Math.{ pow }
 import HumanImports._
+import PoundImports._
 
 abstract class Human {
   def age: Int
@@ -13,6 +14,8 @@ case class Male(val age: Int, val height: Double, val weight: Double) extends Hu
 case class Female(val age: Int, val height: Double, val weight: Double) extends Human
 
 object Statistics extends App {
+
+  println(63.0.toPound)
 
   // 1. Function is first-class object
   val func: (Int) => Int = (x :Int) => x * 2;
