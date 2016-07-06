@@ -1,4 +1,5 @@
 import Math.{ pow }
+import HumanImports._
 
 abstract class Human {
   def age: Int
@@ -19,21 +20,26 @@ object Statistics extends App {
   println(func(2))
 
    // Input source
-   val male: List[Male] = List(Male(31, 176.0, 63.0), Male(19, 170, 60.0), Male(21, 168.0, 58.0), Male(16, 172.0, 65.0), Male(32, 165.0, 60.0))
-   val female: List[Female] = List(Female(18, 154.0, 52.0), Female(28, 166, 58.0), Female(23, 158.0, 56.0), Female(32, 168.0, 60.0), Female(17, 148.0, 48.0))
-   val source: List[Human] = male ::: female
+   val maleList: List[Male] = List(Male(31, 176.0, 63.0), Male(19, 170, 60.0), Male(21, 168.0, 58.0), Male(16, 172.0, 65.0), Male(32, 165.0, 60.0))
+   val femaleList: List[Female] = List(Female(18, 154.0, 52.0), Female(28, 166, 58.0), Female(23, 158.0, 56.0), Female(32, 168.0, 60.0), Female(17, 148.0, 48.0))
+   val source: List[Human] = maleList ::: femaleList
 
    println("---Youngers---")
-   val isYoung: (Human) => Boolean = (h: Human) => h.age < 20
+   val isYoung: (Human) => Boolean = (h: Human) => h.isYoung
    val r: List[Human] = source.filter(isYoung)
    println(r)
    println("---Males---")
    val r2: List[Human] = source.filter((s: Human) => isMale(s))
    println(r2)
    println("---Young Sorted Age Males---")
-   // val r22: List[Int] = male.filter(isYoung).map(_.age).sortWith(_>_)
-   val r22: List[Int] = male.filter(isYoung).map(_.age).sorted
-   println(r22)
+   // val ageList: List[Int] = male.filter(isYoung).map(_.age).sortWith(_>_)
+   // val ageList: List[Int] = maleList.filter(isYoung).map(_.age).sorted
+   val ageList: List[Int] = maleList.filter(_.isYoung).map(_.age).sorted
+   println(ageList)
+   println("---Not Young Reverse Sorted Height Females---")
+   // val heightList: List[Double] = femaleList.filterNot(isYoung).map(_.height).sorted.reverse
+   val heightList: List[Double] = femaleList.filterNot(_.isYoung).map(_.height).sorted.reverse
+   println(heightList)
 
    val f = filterByAge(source)
    val r3 = f(4)
